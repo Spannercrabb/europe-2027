@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europe 2027 — Kym's Trip</title>
+<style>
+  :root {
+    --ink: #1a2332;
+    --ink-soft: #4a5568;
+    --paper: #faf8f3;
+    --card: #ffffff;
+    --accent: #c2410c;
+    --accent-soft: #fed7aa;
+    --rhine: #1e40af;
+    --rhine-soft: #dbeafe;
+    --line: #e5e0d4;
+    --gold: #b45309;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--paper);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* HERO */
+  header.hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    color: white;
+    padding: 60px 20px 50px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+  }
+  header.hero h1 {
+    font-size: 3.2em;
+    margin: 0 0 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+  header.hero .subtitle {
+    font-size: 1.3em;
+    opacity: 0.95;
+    font-style: italic;
+    margin: 0 0 18px;
+  }
+  header.hero .dates {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  header.hero .travellers {
+    margin-top: 20px;
+    font-size: 0.95em;
+    opacity: 0.9;
+  }
+
+  /* NAV */
+  nav.jump {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  nav.jump .inner {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    justify-content: center;
+    font-size: 0.9em;
+  }
+  nav.jump a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav.jump a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 50px 0 20px; }
+  section h2 {
+    font-size: 2em;
+    color: var(--accent);
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  section h3 {
+    color: var(--ink);
+    font-size: 1.3em;
+    margin-top: 28px;
+  }
+  section h4 {
+    color: var(--gold);
+    margin: 20px 0 8px;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* LEG CARDS */
+  .leg-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 20px 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    border-left: 5px solid var(--accent);
+  }
+  .leg-card.cruise { border-left-color: var(--rhine); }
+  .leg-card .leg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .leg-card .leg-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--ink);
+  }
+  .leg-card .leg-dates {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1em;
+  }
+  .leg-card .nights {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+  .leg-card.cruise .nights {
+    background: var(--rhine-soft);
+    color: var(--rhine);
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    background: #f3efe4;
+    font-weight: bold;
+    color: var(--ink);
+    font-size: 0.95em;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fffef8; }
+
+  /* LISTS */
+  ul { padding-left: 22px; }
+  ul li { margin: 6px 0; }
+
+  /* BOXES */
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 6px;
+    font-size: 0.95em;
+  }
+  .tip strong { color: var(--gold); }
+
+  .birthday {
+    background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 14px 0;
+    font-size: 1.05em;
+    border: 2px dashed #db2777;
+    color: #9f1239;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .cruise-ports {
+    background: var(--rhine-soft);
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin: 18px 0;
+  }
+  .cruise-ports ol {
+    padding-left: 22px;
+    margin: 8px 0 0;
+  }
+  .cruise-ports ol li {
+    margin: 10px 0;
+    padding-left: 6px;
+  }
+  .cruise-ports strong { color: var(--rhine); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: #cbd5e0;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    font-size: 0.9em;
+  }
+  footer p { margin: 6px 0; }
+
+  /* LINKS */
+  a { color: var(--accent); }
+  a:hover { text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    header.hero h1 { font-size: 2.2em; }
+    .leg-card { padding: 22px; }
+    section h2 { font-size: 1.6em; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>🇪🇺 Europe 2027</h1>
+  <p class="subtitle">Switzerland · Rhine River Cruise · Netherlands · France</p>
+  <div class="dates">📅 Tue 23 March → Tue 13 April 2027 · 21 days</div>
+  <div class="travellers">✨ Our 4-person adventure ✨</div>
+</header>
+
+<nav class="jump">
+  <div class="inner">
+    <a href="#overview">Overview</a>
+    <a href="#leg1">1. Zurich</a>
+    <a href="#leg2">2. Basel</a>
+    <a href="#leg3">3. Rhine Cruise</a>
+    <a href="#leg4">4. Amsterdam</a>
+    <a href="#leg5">5. Paris</a>
+    <a href="#flights">Flights</a>
+    <a href="#visas">Visas</a>
+    <a href="#tickets">Pre-book</a>
+    <a href="#budget">Budget</a>
+    <a href="#practical">Practical Info</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="overview">
+    <h2>🗺️ Trip Overview</h2>
+    <p>A beautiful 3-week adventure through the heart of Europe — starting with the Swiss Alps, gliding down the Rhine on a Viking river cruise through Germany and the Netherlands, then finishing in springtime Paris.</p>
+
+    <table>
+      <thead>
+        <tr><th>Dates</th><th>Where</th><th>Nights</th><th>How You Get There</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tue 23 Mar</td><td>✈️ Brisbane → Zurich</td><td>—</td><td>Long-haul flight</td></tr>
+        <tr><td>Wed 24 – Sat 27 Mar</td><td>🇨🇭 <strong>Zurich</strong></td><td>3</td><td>Arrive from airport</td></tr>
+        <tr><td>Sat 27 – Sun 28 Mar</td><td>🇨🇭 <strong>Basel</strong></td><td>1</td><td>Swiss train (~1 hour)</td></tr>
+        <tr><td>Sun 28 Mar – Sun 4 Apr</td><td>🚢 <strong>Viking Kara Rhine cruise</strong></td><td>7</td><td>Board ship in Basel</td></tr>
+        <tr><td>Sun 4 – Thu 8 Apr</td><td>🌷 <strong>Amsterdam</strong></td><td>4</td><td>Disembark cruise</td></tr>
+        <tr><td>Thu 8 – Mon 12 Apr</td><td>🗼 <strong>Paris</strong></td><td>4</td><td>Eurostar → Gare du Nord</td></tr>
+        <tr><td>Mon 12 / Tue 13 Apr</td><td>✈️ Paris → Brisbane</td><td>—</td><td>Long-haul flight home</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <strong>💡 At a glance:</strong> 19 nights' accommodation, 4 countries, 1 river cruise, and plenty of cobblestone streets and good coffee. Late March / early April is springtime in Europe — expect 5–15°C and pack layers!
+    </div>
+  </section>
+
+  <!-- LEG 1: ZURICH -->
+  <section id="leg1">
+    <h2>Leg 1 · Zurich 🇨🇭</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">Zurich, Switzerland</div>
+        <div class="leg-dates">Wed 24 – Sat 27 March <span class="nights">3 nights</span></div>
+      </div>
+      <p>Your gentle landing pad. Zurich is safe, calm, and gorgeous — perfect for shaking off the jetlag from the long flight. The old town (Altstadt) wraps around a sparkling blue lake, with Swiss trams, cobbled lanes, and chocolate shops on every corner.</p>
+
+      <div class="birthday">🎂 Your birthday is Wednesday 24 March — the day you arrive in Zurich! 🎉</div>
+
+      <h4>🏨 Our hotel — booked ✓</h4>
+      <ul>
+        <li><strong>Hotel Felix</strong> · Booking.com Genius rated</li>
+        <li>📍 Right in the heart of Zurich's Old Town (City Centre)</li>
+        <li>Check-in: <strong>Wed 24 March</strong> (from 3:00 pm)</li>
+        <li>Check-out: <strong>Sat 27 March</strong> (by 12:00 noon)</li>
+        <li><strong>2 rooms · 3 nights</strong></li>
+      </ul>
+      <div class="tip">
+        <strong>💡 Fantastic location!</strong> Zähringerstrasse is right in the heart of Zurich's Altstadt (Old Town) — you can walk to Grossmünster, the lake, Bahnhofstrasse shopping, and countless cafés in just minutes. Zurich Main Station (for the Basel train on Saturday) is also only a short walk away. Perfect base for your birthday celebration! 🎂
+      </div>
+
+      <h4>Getting from the airport</h4>
+      <ul>
+        <li>Zurich Airport (ZRH) to city centre is easy — trains run every 10 minutes and take about 12 minutes to Zurich Hauptbahnhof (main station).</li>
+        <li>A taxi is around CHF 60–70.</li>
+      </ul>
+
+      <h4>Things to see &amp; do</h4>
+      <ul>
+        <li><strong>Altstadt (Old Town)</strong> — wander the medieval laneways, peek into Grossmünster and Fraumünster churches</li>
+        <li><strong>Bahnhofstrasse</strong> — one of the world's most elegant shopping streets, perfect for window browsing</li>
+        <li><strong>Lake Zurich boat trip</strong> — a short scenic ride with mountain views</li>
+        <li><strong>Uetliberg Mountain</strong> — 20-minute train ride, then an easy walk to the top for panoramic Alps views</li>
+        <li><strong>Lindenhof</strong> — quiet hilltop park built on Roman foundations, free lookout over the old town</li>
+      </ul>
+
+      <h4>🏛️ History highlights</h4>
+      <ul>
+        <li><strong>Swiss National Museum</strong> — right by the station, 1000 years of Swiss history under one roof. Free audio guide in English, fabulous for a rainy afternoon. Allow 2–3 hours.</li>
+        <li><strong>Grossmünster Cathedral</strong> — where the Swiss-German Reformation began in the 1500s (Huldrych Zwingli preached here). Climb the tower for epic views over the lake.</li>
+        <li><strong>Fraumünster Church</strong> — famous for its <strong>Marc Chagall stained-glass windows</strong> (1970) — absolutely magical on a sunny morning. Small entry fee, worth every cent.</li>
+        <li><strong>Lindenhof hill</strong> — this was the site of a Roman customs house 2,000 years ago. Now it's a peaceful park with huge chess boards and the best free view in the city.</li>
+        <li><strong>St. Peter's Church</strong> — has the <strong>largest clock face in Europe</strong> (8.6 metres wide!) — right in the old town.</li>
+        <li><strong>Kunsthaus Zurich</strong> — Switzerland's top art museum, with Picasso, Monet, Van Gogh, and Swiss masters. Recently expanded.</li>
+      </ul>
+
+      <h4>🥖 Food markets &amp; food streets</h4>
+      <ul>
+        <li><strong>Markthalle im Viadukt</strong> 🏆 — a gorgeous covered food hall in a converted railway viaduct. Artisan cheese, fresh bread, Swiss wine, charcuterie, olives, flowers. Open Mon–Sat. A must-visit!</li>
+        <li><strong>Bürkliplatz Farmer's Market</strong> — right on the lake! Tuesday &amp; Friday mornings, local produce, cheese, flowers, honey. Beautiful lakeside setting.</li>
+        <li><strong>Helvetiaplatz Market</strong> — local produce market, Tuesday &amp; Friday mornings in the trendy Kreis 4 district</li>
+        <li><strong>Niederdorfstrasse</strong> — the old town's food &amp; restaurant street, great for evening strolls with gelato or hot chocolate</li>
+        <li><strong>Confiserie Sprüngli (Bahnhofstrasse)</strong> — legendary 1836 chocolate shop. Pick up <strong>Luxemburgerli</strong> (tiny macarons) and truffles. Upstairs café is a treat!</li>
+        <li><strong>Schober (Napfgasse)</strong> — famous old-world café for <em>real</em> Swiss hot chocolate and pastries</li>
+      </ul>
+
+      <h4>Food &amp; treats to try</h4>
+      <ul>
+        <li><strong>Cheese fondue</strong> at a traditional restaurant — classic Swiss comfort food</li>
+        <li><strong>Rösti</strong> — crispy Swiss potato pancake, often topped with eggs or cheese</li>
+        <li><strong>Luxemburgerli</strong> from Confiserie Sprüngli — tiny macarons, take a box home</li>
+        <li><strong>Hot chocolate</strong> at any Sprüngli or Lindt café</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Tip:</strong> Zurich is expensive — about 1.5× Australian prices. A simple café lunch is AUD $30–40. Use supermarkets (Coop, Migros) for cheaper snacks and picnic food.
+      </div>
+    </div>
+  </section>
+
+  <!-- LEG 2: BASEL -->
+  <section id="leg2">
+    <h2>Leg 2 · Basel 🇨🇭</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">Basel, Switzerland</div>
+        <div class="leg-dates">Sat 27 – Sun 28 March <span class="nights">1 night</span></div>
+      </div>
+      <p>A charming overnight stop before the cruise. Basel sits right where Switzerland, Germany and France meet on the Rhine — and it's where your Viking ship is waiting! Pretty old town, art galleries, and a lovely riverside walk.</p>
+
+      <h4>🏨 Our hotel — booked ✓</h4>
+      <ul>
+        <li><strong>Hotel Rheinfelderhof</strong> ⭐⭐</li>
+        <li>📍 Clara/Kleinbasel neighbourhood (close to the Rhine and Viking ship)</li>
+        <li>Check-in: from <strong>3:00 pm</strong> Sat 27 March</li>
+        <li>Check-out: until <strong>11:00 am</strong> Sun 28 March</li>
+      </ul>
+      <div class="tip">
+        <strong>💡 Location note:</strong> Hammerstrasse is in the Clara/Kleinbasel neighbourhood on the north side of the Rhine — a quiet, walkable area with easy tram access to the old town and the river. Perfect for a short stroll to the Viking ship on Sunday morning!
+      </div>
+
+      <h4>Getting there from Zurich</h4>
+      <ul>
+        <li>Direct train from Zurich HB to Basel SBB — about <strong>1 hour</strong>, trains run every 15–30 minutes</li>
+        <li>Swiss trains are famously punctual, clean and comfortable — one of the trip highlights in itself</li>
+        <li>Tickets around CHF 35–50 one-way (book on <a href="https://www.sbb.ch" target="_blank">sbb.ch</a>)</li>
+      </ul>
+
+      <h4>🏛️ What to do in one afternoon — history highlights</h4>
+      <ul>
+        <li><strong>Basel Minster (Münster)</strong> — 1000-year-old red sandstone cathedral where the famous scholar Erasmus of Rotterdam is buried. The Pfalz terrace behind it has the best view over the Rhine.</li>
+        <li><strong>Marktplatz &amp; the red Rathaus</strong> — the stunning 500-year-old town hall covered in frescoes and painted shields. One of the most photographed buildings in Switzerland!</li>
+        <li><strong>Old Town stroll</strong> — medieval streets, painted fountains (look for the Fasnachts-Brunnen by Jean Tinguely!), flower boxes everywhere</li>
+        <li><strong>Rhine ferry</strong> — cross the river the old-fashioned way on a <strong>rope-pulled ferry</strong> dating back to the 1850s. Just CHF 2 — a magical Basel tradition!</li>
+        <li><strong>Spalentor gate</strong> — a massive medieval city gate from 1400, one of the most beautiful in Switzerland</li>
+        <li><strong>Kunstmuseum Basel</strong> — oldest public art museum in the world (1661)! Picasso, Rembrandt, Holbein</li>
+        <li><strong>Sunset walk along the Rhine promenade</strong> — perfect on a mild evening, with river swimmers in summer</li>
+      </ul>
+
+      <h4>🥖 Food markets</h4>
+      <ul>
+        <li><strong>Markthalle Basel</strong> 🏆 — a gorgeous covered food hall in a huge domed building. Swiss, Italian, French, Asian food stalls all under one roof. Great for a quick authentic lunch! 5 mins from your hotel.</li>
+        <li><strong>Marktplatz Market</strong> — daily morning market right in front of the red Rathaus. Fresh bread, cheese, fruit, flowers. Perfect for picnic supplies!</li>
+        <li><strong>Läckerli Huus</strong> — try <em>Basler Läckerli</em>, the city's traditional spiced honey biscuits (a Basel specialty since 1720!)</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Tip:</strong> Try to book a hotel close to the Rhine so you can walk (or take a short taxi) to the Viking ship on Sunday morning. The Viking dock is near Schifflände or Kleinbasel depending on the ship.
+      </div>
+    </div>
+  </section>
+
+  <!-- LEG 3: CRUISE -->
+  <section id="leg3">
+    <h2>Leg 3 · Rhine Getaway 🚢</h2>
+    <div class="leg-card cruise">
+      <div class="leg-header">
+        <div class="leg-title">Viking Kara · Basel → Amsterdam</div>
+        <div class="leg-dates">Sun 28 March – Sun 4 April <span class="nights">7 nights</span></div>
+      </div>
+      <p>The heart of the trip! You'll glide gently down the Rhine on the <strong>Viking Kara</strong>, stopping at a different riverside town each day. Castles, vineyards, medieval cities, and tulip fields — and your floating hotel comes with you.</p>
+
+      <h4>Our cabins</h4>
+      <ul>
+        <li><strong>Category A Balcony Cabins</strong> on the Upper Deck, twin beds</li>
+        <li>2 cabins, side by side — so we're all together!</li>
+        <li>Meal plan: Standard · Gratuities included</li>
+      </ul>
+
+      <h4>Day-by-day ports of call</h4>
+      <div class="cruise-ports">
+        <ol>
+          <li><strong>Sun 28 Mar — Basel 🇨🇭</strong> · Board the ship in the afternoon, settle in, welcome dinner on board</li>
+          <li><strong>Mon 29 Mar — Breisach 🇩🇪</strong> · Gateway to Germany's Black Forest and the pretty wine village of Riquewihr in France. Cuckoo clocks, pinot noir, and fairytale forests.</li>
+          <li><strong>Tue 30 Mar — Strasbourg 🇫🇷</strong> · A jewel of Alsace with a soaring Gothic cathedral, half-timbered houses, and canals. "Petite France" is unforgettable.</li>
+          <li><strong>Wed 31 Mar — Speyer 🇩🇪</strong> · Ancient city with one of the largest Romanesque cathedrals in the world. Lovely cobbled old town.</li>
+          <li><strong>Wed 31 Mar (evening) — Rüdesheim 🇩🇪</strong> · The famous Drosselgasse wine lane, Rhine Valley vineyards, and the delightful Mechanical Musical Instrument Museum.</li>
+          <li><strong>Thu 1 Apr — Koblenz 🇩🇪</strong> · Where the Rhine meets the Moselle. You'll sail through the castle-studded <em>Middle Rhine</em> today — bring your camera, this is the most beautiful stretch!</li>
+          <li><strong>Fri 2 Apr — Cologne 🇩🇪</strong> · The gigantic twin-spired Cologne Cathedral (Kölner Dom) is breathtaking. Chocolate museum, riverside old town, and the famous Kölsch beer.</li>
+          <li><strong>Sat 3 Apr — Kinderdijk 🇳🇱</strong> · A UNESCO site with 19 historic windmills — picture-perfect Dutch countryside, tulips should be starting to bloom!</li>
+          <li><strong>Sun 4 Apr — Amsterdam 🇳🇱</strong> · Disembark in Amsterdam. End of cruise.</li>
+        </ol>
+      </div>
+
+      <h4>What to expect on board</h4>
+      <ul>
+        <li><strong>All meals included</strong> — breakfast, lunch and dinner in the main restaurant (buffet or menu)</li>
+        <li><strong>Guided shore excursions</strong> — included in every port (Viking is famous for this)</li>
+        <li><strong>Beer, wine &amp; soft drinks</strong> with lunch and dinner are included</li>
+        <li><strong>Free WiFi</strong> on board (may be slow in some stretches)</li>
+        <li><strong>Lounge with live music</strong>, sun deck, small library</li>
+        <li>Dress is smart-casual — no need to pack formal outfits</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Tip:</strong> The Middle Rhine stretch (between Rüdesheim and Koblenz) has over 20 castles on the hills in just 65km — the most in any river valley in the world. Don't miss this sailing day on deck!
+      </div>
+    </div>
+  </section>
+
+  <!-- LEG 4: AMSTERDAM -->
+  <section id="leg4">
+    <h2>Leg 4 · Amsterdam 🌷</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">Amsterdam, Netherlands</div>
+        <div class="leg-dates">Sun 4 – Thu 8 April <span class="nights">4 nights</span></div>
+      </div>
+      <p>Early April is <strong>tulip season</strong> in Holland — you've timed it perfectly! Amsterdam is canals, gabled houses, bikes, museums, and some of the friendliest people in Europe (most speak excellent English).</p>
+
+      <h4>🌷 Tulips &amp; flowers (the best time to visit is right NOW!)</h4>
+      <ul>
+        <li><strong>Keukenhof Gardens</strong> 🏆 — the world's most famous tulip gardens, only open March–May. <strong>7 million flowers</strong> across 32 hectares in every colour imaginable. A must on a trip to Holland in April! Day trip by bus or guided tour from Amsterdam (~45 minutes).</li>
+        <li><strong>Flower fields by bike or tour</strong> — the tulip fields around Lisse (near Keukenhof) explode into colour in April. You can rent bikes or join a "tulip field" tour to see them from above.</li>
+        <li><strong>Bloemenmarkt (floating flower market)</strong> — the world's only <strong>floating flower market</strong>, right in central Amsterdam on the Singel canal. Hundreds of fresh tulip bouquets and bulbs to take home (get the certified "export-ready" bulbs so customs won't confiscate them!)</li>
+        <li><strong>Tulip Museum (Amsterdam Tulip Museum)</strong> — small but lovely, tells the whole history of "tulip mania" in the 1600s when a single bulb cost more than a house!</li>
+        <li><strong>Hortus Botanicus</strong> — beautiful 1638 botanical gardens in the heart of Amsterdam, one of the oldest in the world. Stunning tulip displays in April.</li>
+        <li><strong>FloraHolland Aalsmeer flower auction</strong> — the world's biggest flower trading floor. Go early (arrive by 7 am!) to see millions of flowers changing hands in real time. Unforgettable if you love flowers.</li>
+      </ul>
+
+      <h4>🏛️ History &amp; culture</h4>
+      <ul>
+        <li><strong>Anne Frank House</strong> — deeply moving, a must-visit. <strong>Book online at least 6 weeks in advance</strong> — they sell out fast and there's no ticket booth on the day.</li>
+        <li><strong>Rijksmuseum</strong> — the big one! Vermeer's <em>Milkmaid</em>, Rembrandt's <em>Night Watch</em>, Dutch Golden Age masters. In a stunning 1885 building — allow 3 hours.</li>
+        <li><strong>Van Gogh Museum</strong> — the world's largest Van Gogh collection (200+ paintings). Incredible to see the colours in real life. Pre-book tickets a few weeks ahead.</li>
+        <li><strong>Canal cruise</strong> — a gentle 1-hour boat tour is the loveliest way to see the city. Book a "small boat" tour (max 12 people) for a better experience than the big glass boats.</li>
+        <li><strong>Begijnhof</strong> — hidden medieval courtyard from the 1300s, where Catholic women lived quietly. Totally peaceful and free to visit.</li>
+        <li><strong>Dam Square &amp; Royal Palace</strong> — the heart of Amsterdam, with the 17th-century palace where Dutch royals still occasionally live</li>
+        <li><strong>Westerkerk</strong> — the tallest church tower in Amsterdam, next to Anne Frank House. You can climb it for city views (mild stairs!)</li>
+        <li><strong>Jordaan neighbourhood</strong> — pretty canals, little cafés, vintage shops. The most photogenic area in the city.</li>
+        <li><strong>Vondelpark</strong> — lovely park for a relaxed afternoon walk under blossom trees in April</li>
+      </ul>
+
+      <h4>🥖 Food markets (Amsterdam has brilliant ones!)</h4>
+      <ul>
+        <li><strong>Albert Cuyp Market</strong> 🏆 — Amsterdam's biggest &amp; most famous street market, open Mon–Sat, 9 am–5 pm. Cheese, herring, fresh stroopwafels (get them warm!), flowers, clothing. Go hungry!</li>
+        <li><strong>Foodhallen</strong> — an incredible food hall in a converted tram depot. 30+ gourmet food stalls (Dutch, Asian, Mexican, Italian) — perfect for a relaxed dinner where everyone can choose something different.</li>
+        <li><strong>Noordermarkt</strong> — Saturday organic farmers' market in the Jordaan. Beautiful fresh produce, Dutch cheese wheels, and a famous apple pie stall (opposite Winkel 43 café!)</li>
+        <li><strong>De Kaaskamer</strong> (Runstraat) — legendary cheese shop with 400+ Dutch cheeses. Ask for samples!</li>
+        <li><strong>Haarlemmerstraat &amp; Haarlemmerdijk</strong> — the "it" food street in Amsterdam: bakeries, specialty food shops, little cafés</li>
+      </ul>
+
+      <h4>Day trip ideas</h4>
+      <ul>
+        <li><strong>Zaanse Schans</strong> — picture-book Dutch windmill village, just 30 min by train</li>
+        <li><strong>Delft &amp; The Hague</strong> — blue pottery town + Dutch royal city, doable in a day</li>
+        <li><strong>Volendam &amp; Marken</strong> — quaint fishing villages on the IJsselmeer</li>
+      </ul>
+
+      <h4>Food to try</h4>
+      <ul>
+        <li><strong>Stroopwafels</strong> — warm syrup waffles from a street stall</li>
+        <li><strong>Herring</strong> — the Dutch eat it raw with pickles and onion (brave!)</li>
+        <li><strong>Bitterballen</strong> — crispy deep-fried meat snacks at any pub</li>
+        <li><strong>Apple pie</strong> at Winkel 43 in the Jordaan — legendary</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Tip:</strong> Amsterdam is flat and tiny — walking between sights is easy. Watch out for bicycles though! They have right of way and go fast. Also: book Anne Frank House, Van Gogh, and Keukenhof tickets <em>before you leave Australia.</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEG 5: PARIS -->
+  <section id="leg5">
+    <h2>Leg 5 · Paris 🗼</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">Paris, France</div>
+        <div class="leg-dates">Thu 8 – Mon 12 April <span class="nights">4 nights</span></div>
+      </div>
+      <p>The grand finale! Paris in April is pure magic — chestnut trees in blossom, cafés spilling onto the pavement, the Seine glittering in the sun. Even if you've been before, it never disappoints.</p>
+
+      <h4>🏨 Our hotel — booked ✓</h4>
+      <ul>
+        <li><strong>Eiffel Yard Hotel</strong> · Guest rating <strong>9.7/10</strong> ⭐⭐⭐⭐⭐</li>
+        <li>📍 7th arrondissement — a 10-minute walk from the Eiffel Tower! 🗼</li>
+        <li>Check-in: <strong>Thu 8 April</strong></li>
+        <li>Check-out: <strong>Mon 12 April</strong> (4 nights)</li>
+        <li>Free cancellation · Brilliant location on Rue Cler market street</li>
+      </ul>
+      <div class="tip">
+        <strong>💡 Amazing location!</strong> You're in the 7th arrondissement — one of the most elegant parts of Paris. The Eiffel Tower is about a <strong>10-minute walk</strong> away, Les Invalides (Napoleon's tomb) is just down the street, and the Rue Cler market street — with its gorgeous bakeries, cheese shops, and cafés — is around the corner. Walkable to the Seine too. A perfect base! 🗼
+      </div>
+
+      <h4>Getting there: the Eurostar</h4>
+      <ul>
+        <li><strong>Amsterdam Centraal → Paris Gare du Nord</strong> direct, about <strong>3 hours 20 minutes</strong></li>
+        <li>Book tickets 3+ months in advance for the best price (around €60–120 one-way)</li>
+        <li>Book at <a href="https://www.eurostar.com" target="_blank">eurostar.com</a> or <a href="https://www.thetrainline.com" target="_blank">thetrainline.com</a></li>
+        <li>Arrive at the station 45 minutes early for passport control &amp; security</li>
+        <li>You step off the train right in central Paris — no airport transfer needed!</li>
+      </ul>
+
+      <h4>🗼 The classics</h4>
+      <ul>
+        <li><strong>Eiffel Tower</strong> — pre-book tickets to skip the queue. Twinkles for 5 minutes every hour after dark. Your hotel is 10 mins walk away!</li>
+        <li><strong>Seine river cruise</strong> — 1-hour evening cruise with the city lit up = unforgettable</li>
+        <li><strong>Tuileries &amp; Luxembourg Gardens</strong> — springtime in Paris parks is pure joy, blossom trees in April</li>
+        <li><strong>Galeries Lafayette</strong> — grand department store with a stunning stained-glass dome and a free rooftop view over Paris</li>
+        <li><strong>Montmartre &amp; Sacré-Cœur</strong> — hilltop village feel, artists' square, the famous white-domed basilica (free to enter)</li>
+      </ul>
+
+      <h4>🏛️ History highlights (Paris is a city of history!)</h4>
+      <ul>
+        <li><strong>Louvre Museum</strong> 🏆 — the Mona Lisa, Venus de Milo, and 35,000 treasures. Go early (9 am) or late afternoon to avoid crowds. Pre-book a timed entry. Don't try to see everything — pick 2–3 wings.</li>
+        <li><strong>Notre-Dame Cathedral</strong> — reopened in December 2024 after the 2019 fire restoration. Free to enter. Gorgeous from the outside and absolutely stunning inside with its restored ceilings.</li>
+        <li><strong>Sainte-Chapelle</strong> — the most beautiful stained-glass chapel in the world (1248). 15 massive stained-glass windows telling the whole Bible. Tucked on Île de la Cité — pre-book to skip the queue.</li>
+        <li><strong>Musée d'Orsay</strong> — Monet, Renoir, Degas, Van Gogh, Cézanne. In a breathtaking former railway station from 1900. Many people prefer this to the Louvre!</li>
+        <li><strong>Palace of Versailles</strong> — 45 minutes by train from central Paris. The Hall of Mirrors, Marie Antoinette's hamlet, vast gardens. Allow a full day and pre-book tickets!</li>
+        <li><strong>Musée Carnavalet</strong> — the history of Paris itself, free entry! Room after room of Paris history from Roman times to today. A local gem.</li>
+        <li><strong>Panthéon</strong> — final resting place of Voltaire, Rousseau, Marie Curie, Victor Hugo. Stunning Latin Quarter monument.</li>
+        <li><strong>Conciergerie</strong> — the medieval palace that became a prison during the French Revolution. Marie Antoinette was held here before her execution. Genuinely moving.</li>
+        <li><strong>Arc de Triomphe</strong> — climb the 284 steps for a view straight down the Champs-Élysées</li>
+        <li><strong>Musée de l'Orangerie</strong> — Monet's huge Water Lilies in oval rooms. Small, quiet, and breathtaking.</li>
+      </ul>
+
+      <h4>🥖 Food markets &amp; food streets (Paris is heaven for this!)</h4>
+      <ul>
+        <li><strong>Rue Cler</strong> 🏆 — the most beautiful market street in Paris, and it's literally around the corner from your hotel! Cheese shops, bakeries, fishmongers, chocolatiers, wine shops, a florist. Grab a baguette, cheese, ham, and a bottle of wine for a picnic under the Eiffel Tower. ✨</li>
+        <li><strong>Marché Bastille</strong> — Paris's biggest open-air market, Thursday &amp; Sunday mornings. Dozens of stalls, cheese wheels the size of tyres, rotisserie chickens, oysters being shucked. A proper Parisian experience!</li>
+        <li><strong>Marché des Enfants Rouges</strong> — the OLDEST covered market in Paris (1615!). In the Marais. Small but gorgeous — grab lunch from one of the food stalls (Moroccan, Italian, Japanese, French).</li>
+        <li><strong>Rue Mouffetard</strong> — a medieval food market street in the Latin Quarter. Cobblestones, flower shops, fromageries, bakeries, tiny restaurants. A morning stroll here is a joy.</li>
+        <li><strong>Marché d'Aligre</strong> — cheap, lively, local — not touristy at all. Combined open-air and indoor market in the 12th.</li>
+        <li><strong>Galeries Lafayette Gourmet</strong> — the food hall section of the famous department store. French patisserie, cheese, wine, chocolate, ready meals to take back to the hotel.</li>
+        <li><strong>La Grande Épicerie de Paris</strong> — the legendary food hall inside Le Bon Marché, considered the best in Paris. Worth a visit just to browse the gorgeous displays.</li>
+      </ul>
+
+      <h4>Day trip ideas</h4>
+      <ul>
+        <li><strong>Palace of Versailles</strong> — easy 45-min train from central Paris. Go early, allow a full day.</li>
+        <li><strong>Giverny</strong> — Monet's gardens (only open April–October). Breathtaking in spring.</li>
+        <li><strong>Reims &amp; Champagne region</strong> — under an hour on the TGV for cathedral + champagne tastings</li>
+      </ul>
+
+      <h4>Food to try</h4>
+      <ul>
+        <li><strong>Croissant &amp; café crème</strong> at a corner bakery — breakfast, every day</li>
+        <li><strong>Macarons</strong> from Ladurée or Pierre Hermé</li>
+        <li><strong>Steak-frites</strong> at a classic brasserie</li>
+        <li><strong>Crêpes</strong> from a street stand (sweet or savoury)</li>
+        <li><strong>Fresh baguette &amp; cheese picnic</strong> in the Tuileries — a Parisian classic</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Tip:</strong> Paris Metro is quick and cheap — buy a pack of 10 tickets ("carnet") or a Navigo Easy card. Watch for pickpockets on busy lines (especially near the Eiffel Tower and at Gare du Nord) — keep handbags zipped and close to you.
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIGHTS -->
+  <section id="flights">
+    <h2>✈️ Flight Booking</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">Brisbane ↔ Europe</div>
+        <div class="leg-dates">Book: June – August 2026</div>
+      </div>
+      <p>You need <strong>multi-city (open-jaw) flights</strong> — flying into one city and out of another:</p>
+      <ul>
+        <li>✈️ <strong>Outbound:</strong> Brisbane (BNE) → Zurich (ZRH) · Tue 23 March 2027</li>
+        <li>✈️ <strong>Return:</strong> Paris (CDG) → Brisbane (BNE) · Mon 12 April 2027 (arriving Tue 13 April)</li>
+      </ul>
+
+      <h4>📅 Best days of the week to fly</h4>
+      <p>The day of the week can make a big difference in price — sometimes $200–$400 per person! Here's the cheapest-to-priciest rundown:</p>
+      <table>
+        <thead><tr><th>Day</th><th>Price</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>🟢 <strong>Tuesday</strong></td><td><strong>Cheapest</strong></td><td>Business travellers avoid it, low demand</td></tr>
+          <tr><td>🟢 <strong>Wednesday</strong></td><td>Cheapest</td><td>Same reason — mid-week is always quieter</td></tr>
+          <tr><td>🟡 <strong>Thursday</strong></td><td>Good value</td><td>Still mid-week, decent prices</td></tr>
+          <tr><td>🟡 <strong>Saturday</strong></td><td>Okay</td><td>Cheaper than you'd think — business travel is off</td></tr>
+          <tr><td>🟠 <strong>Monday</strong></td><td>Pricier</td><td>Business travellers flying back</td></tr>
+          <tr><td>🔴 <strong>Friday</strong></td><td>Expensive</td><td>Weekend-getaway demand</td></tr>
+          <tr><td>🔴 <strong>Sunday</strong></td><td>Most expensive</td><td>Leisure travellers peak day</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip">
+        <strong>🎯 Good news for your trip!</strong> Your outbound flight day — <strong>Tuesday 23 March 2027</strong> — is the <strong>cheapest day of the week</strong> to fly! Perfect timing. Your return on <strong>Monday 12 April</strong> (arriving Brisbane Tue 13 April) is a little pricier, but since your hotels are locked in, stick with these dates. The savings from flying out on a Tuesday should balance it out. 💰
+      </div>
+
+      <h4>⏰ Best day of the week to BOOK (not fly)</h4>
+      <ul>
+        <li><strong>Tuesday &amp; Wednesday</strong> are the best days to search and book — airlines often release new sales on Monday night / Tuesday morning</li>
+        <li><strong>Afternoon/evening</strong> Australian time is when new fares usually drop</li>
+        <li>Avoid booking on <strong>weekends</strong> — prices tend to be highest when most people are shopping</li>
+      </ul>
+
+      <h4>🎯 When to book — sweet spot is June – August 2026</h4>
+      <table>
+        <thead><tr><th>When</th><th>What to do</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Now (April 2026)</strong></td><td>👀 Watch prices, set Google Flights alerts</td><td>Learn what the normal price looks like</td></tr>
+          <tr><td><strong>June – August 2026</strong></td><td>🎯 <strong>Book tickets</strong></td><td>Historic sweet spot for long-haul from Aus</td></tr>
+          <tr><td>Sept – Oct 2026</td><td>⚠️ Still okay, but hurry</td><td>Prices start creeping up</td></tr>
+          <tr><td>Nov 2026 onwards</td><td>🚨 Last chance</td><td>Prices climb fast, fewer seats left</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Best airlines for Brisbane – Europe</h4>
+      <ul>
+        <li><strong>Qatar Airways</strong> (via Doha) — often the best value, great service</li>
+        <li><strong>Singapore Airlines</strong> (via Singapore) — excellent, slightly pricier</li>
+        <li><strong>Emirates</strong> (via Dubai) — very comfortable, good entertainment</li>
+        <li><strong>Etihad</strong> (via Abu Dhabi) — often competitive on price</li>
+      </ul>
+
+      <h4>Expected prices (per person, return)</h4>
+      <ul>
+        <li><strong>Economy:</strong> AUD $2,200 – $3,000 (if booked in sweet spot)</li>
+        <li><strong>Premium Economy:</strong> AUD $4,500 – $6,000</li>
+        <li><strong>Business Class:</strong> AUD $8,000+</li>
+      </ul>
+
+      <div class="tip">
+        <strong>💡 Action today:</strong> Go to <a href="https://www.google.com/flights" target="_blank">Google Flights</a> → enter Brisbane to Zurich (multi-city with Paris return) → click the little bell icon to set a price alert. Google will email you when prices drop. 100% free and super handy!
+      </div>
+
+      <div class="tip">
+        <strong>⭐ Important:</strong> Buy travel insurance the <em>same day</em> you book the flights — not later. That way you're covered for cancellations from day one.
+      </div>
+    </div>
+  </section>
+
+  <!-- VISAS -->
+  <section id="visas">
+    <h2>📘 Visas &amp; Travel Authorisation</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">What you need as an Australian</div>
+        <div class="leg-dates">Apply: early 2027</div>
+      </div>
+
+      <p><strong>Good news:</strong> Australians do <strong>not need a traditional visa</strong> for any of the countries on your trip! Switzerland, Germany, the Netherlands, and France are all in the <strong>Schengen Area</strong>, where Australians can visit visa-free for up to 90 days.</p>
+
+      <h4>🆕 ETIAS — the new travel authorisation</h4>
+      <p>From late 2026, Europe is bringing in a new system called <strong>ETIAS</strong> (European Travel Information and Authorisation System). It's <strong>not a visa</strong> — it's a quick online authorisation like the US ESTA. By March 2027, it's very likely to be required.</p>
+
+      <table>
+        <thead><tr><th>Detail</th><th>Info</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cost</strong></td><td>€20 per person (≈ AUD $33)</td></tr>
+          <tr><td><strong>Free for</strong></td><td>Under 18 or over 70 years old (none of you qualify)</td></tr>
+          <tr><td><strong>Validity</strong></td><td>3 years, or until your passport expires</td></tr>
+          <tr><td><strong>Covers</strong></td><td>All Schengen countries (1 ETIAS = Switzerland + Germany + Netherlands + France, plus 25 others)</td></tr>
+          <tr><td><strong>How long to approve</strong></td><td>Usually minutes, can take up to 96 hours</td></tr>
+          <tr><td><strong>Launch date</strong></td><td>Expected Q4 2026 (October–December 2026)</td></tr>
+        </tbody>
+      </table>
+
+      <h4>🌐 Official website — ONLY use this one!</h4>
+      <div class="tip">
+        <strong>⚠️ Watch out for scam sites!</strong> Many fake websites charge $60–$100 for ETIAS. The <strong>only official site</strong> is:
+        <br><br>
+        🔗 <a href="https://travel-europe.europa.eu/etias_en" target="_blank"><strong>travel-europe.europa.eu/etias_en</strong></a>
+        <br><br>
+        Look for a URL ending in <code>.europa.eu</code> — anything else is NOT official.
+      </div>
+
+      <h4>📋 What you'll need to apply</h4>
+      <ul>
+        <li>Valid Australian passport (with at least 3 months validity beyond your return date)</li>
+        <li>Email address</li>
+        <li>Debit or credit card for the €20 fee</li>
+        <li>Personal details (name, DOB, passport number)</li>
+        <li>Your first Schengen country of entry (that's <strong>Switzerland</strong> for you)</li>
+      </ul>
+
+      <h4>⏰ When to apply</h4>
+      <ul>
+        <li><strong>As soon as ETIAS opens</strong> (expected late 2026)</li>
+        <li>Ideally <strong>by January or February 2027</strong> — at least 4–6 weeks before flying</li>
+        <li>Don't leave it to the last minute! Approval is usually quick, but if there's any issue it can take up to 96 hours, and you <strong>cannot board your flight without it</strong> once the system is live</li>
+      </ul>
+
+      <h4>📘 Passport check — do this NOW</h4>
+      <div class="tip">
+        <strong>⭐ Important:</strong> Your passport must be valid for <strong>at least 3 months after 13 April 2027</strong> — so valid until at least <strong>July 2027</strong>. If it expires before then, renew it now! Australian passport renewals can take 6+ weeks during busy periods. Apply at <a href="https://www.passports.gov.au" target="_blank">passports.gov.au</a>.
+      </div>
+
+      <h4>🛂 Other things to know</h4>
+      <ul>
+        <li><strong>EES (Entry/Exit System):</strong> A new biometric border system launched in 2025 — no application, just fingerprints/photo at the airport on arrival. Nothing to do beforehand.</li>
+        <li><strong>90-day rule:</strong> You can stay up to 90 days in any 180-day period across all Schengen countries combined — your 21-day trip is well within this</li>
+        <li><strong>Switzerland is Schengen too</strong> (even though it's not in the EU) — you don't need anything extra for it</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRE-BOOK TICKETS -->
+  <section id="tickets">
+    <h2>🎫 Pre-Purchase Tickets</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">What to book before you fly</div>
+        <div class="leg-dates">Book: Jan – Feb 2027</div>
+      </div>
+      <p>Some attractions in Europe <strong>must be pre-booked</strong> or you'll either be turned away at the door, or queue for 2+ hours. Others are optional to pre-book but save you a lot of hassle. Here's the full list for your trip:</p>
+
+      <h4>🚨 MUST pre-book (will not let you in without a ticket!)</h4>
+      <table>
+        <thead><tr><th>Attraction</th><th>When to book</th><th>Website</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>🌷 Keukenhof Gardens</strong><br>(Amsterdam day trip)</td>
+            <td><strong>Dec 2026 – Feb 2027</strong> (sells out by late March)</td>
+            <td><a href="https://keukenhof.nl" target="_blank">keukenhof.nl</a></td>
+          </tr>
+          <tr>
+            <td><strong>🏠 Anne Frank House</strong><br>(Amsterdam)</td>
+            <td><strong>6 weeks before visit</strong> — tickets released exactly 6 weeks ahead at 10 am NL time, gone within hours!</td>
+            <td><a href="https://annefrank.org" target="_blank">annefrank.org</a></td>
+          </tr>
+          <tr>
+            <td><strong>🗼 Eiffel Tower</strong><br>(Paris)</td>
+            <td><strong>60 days before</strong> — tickets released 2 months ahead, sell out fast for popular times</td>
+            <td><a href="https://www.toureiffel.paris" target="_blank">toureiffel.paris</a></td>
+          </tr>
+          <tr>
+            <td><strong>🎨 Louvre Museum</strong><br>(Paris)</td>
+            <td><strong>2–4 weeks before</strong> — entry requires a timed-slot ticket</td>
+            <td><a href="https://www.louvre.fr" target="_blank">louvre.fr</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>⚠️ Highly recommended to pre-book (saves 1–2 hour queues)</h4>
+      <table>
+        <thead><tr><th>Attraction</th><th>When to book</th><th>Website</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>🎨 Van Gogh Museum</strong><br>(Amsterdam)</td>
+            <td>2–4 weeks before</td>
+            <td><a href="https://www.vangoghmuseum.nl" target="_blank">vangoghmuseum.nl</a></td>
+          </tr>
+          <tr>
+            <td><strong>🎨 Rijksmuseum</strong><br>(Amsterdam)</td>
+            <td>1–2 weeks before</td>
+            <td><a href="https://www.rijksmuseum.nl" target="_blank">rijksmuseum.nl</a></td>
+          </tr>
+          <tr>
+            <td><strong>🎨 Musée d'Orsay</strong><br>(Paris)</td>
+            <td>1–2 weeks before</td>
+            <td><a href="https://www.musee-orsay.fr" target="_blank">musee-orsay.fr</a></td>
+          </tr>
+          <tr>
+            <td><strong>⛪ Sainte-Chapelle</strong><br>(Paris)</td>
+            <td>1–2 weeks before</td>
+            <td><a href="https://www.sainte-chapelle.fr" target="_blank">sainte-chapelle.fr</a></td>
+          </tr>
+          <tr>
+            <td><strong>👑 Palace of Versailles</strong><br>(Paris day trip)</td>
+            <td>2–3 weeks before</td>
+            <td><a href="https://www.chateauversailles.fr" target="_blank">chateauversailles.fr</a></td>
+          </tr>
+          <tr>
+            <td><strong>🚂 Eurostar</strong><br>(Amsterdam → Paris, Thu 8 Apr)</td>
+            <td><strong>3+ months before</strong> — prices rise the closer you get!</td>
+            <td><a href="https://www.eurostar.com" target="_blank">eurostar.com</a></td>
+          </tr>
+          <tr>
+            <td><strong>🚆 SBB train</strong><br>(Zurich → Basel, Sat 27 Mar)</td>
+            <td>Anytime, same price — book a week before</td>
+            <td><a href="https://www.sbb.ch" target="_blank">sbb.ch</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>🟢 No need to pre-book</h4>
+      <ul>
+        <li><strong>Notre-Dame Cathedral</strong> (Paris) — free, just walk in</li>
+        <li><strong>Sacré-Cœur</strong> (Montmartre) — free</li>
+        <li><strong>Seine river cruises</strong> (Paris) — buy on the day, plenty of operators</li>
+        <li><strong>Amsterdam canal cruises</strong> — buy on the day</li>
+        <li><strong>Markthalle im Viadukt</strong> &amp; <strong>Basel Markthalle</strong> — free entry</li>
+        <li><strong>All food markets</strong> — just turn up!</li>
+        <li><strong>Bloemenmarkt</strong> (floating flower market) — free to browse</li>
+        <li><strong>Churches</strong> — usually free, including Grossmünster and Basel Minster</li>
+        <li><strong>Viking cruise shore excursions</strong> — included! No pre-booking needed</li>
+      </ul>
+
+      <h4>⏰ When to book — a month-by-month checklist</h4>
+      <table>
+        <thead><tr><th>Month</th><th>What to book</th></tr></thead>
+        <tbody>
+          <tr><td><strong>June – Aug 2026</strong></td><td>✈️ International flights (Brisbane ↔ Europe)</td></tr>
+          <tr><td><strong>Oct – Dec 2026</strong></td><td>🎫 Apply for ETIAS (when the system opens)</td></tr>
+          <tr><td><strong>Dec 2026 – Jan 2027</strong></td><td>🌷 Keukenhof tickets, 🚂 Eurostar tickets</td></tr>
+          <tr><td><strong>Jan 2027</strong></td><td>🗼 Eiffel Tower (60 days before travel), 👑 Versailles</td></tr>
+          <tr><td><strong>Feb 2027</strong></td><td>🏠 Anne Frank House (6 weeks before your Amsterdam dates!), 🎨 Louvre, Musée d'Orsay</td></tr>
+          <tr><td><strong>Early March 2027</strong></td><td>🎨 Van Gogh Museum, Rijksmuseum, Sainte-Chapelle</td></tr>
+          <tr><td><strong>Mid March 2027</strong></td><td>🚆 Zurich → Basel train, final checks, print all tickets</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip">
+        <strong>💡 Save everything to your phone!</strong> Create a folder in your Photos or in Google Drive called "Europe 2027 tickets" and save a screenshot or PDF of every booking confirmation. Even better — print them all out and keep them in a travel wallet as backup (in case your phone dies or runs out of battery).
+      </div>
+
+      <div class="tip">
+        <strong>🚨 Top priority — don't miss these!</strong> The 3 most time-sensitive bookings are:
+        <ol>
+          <li><strong>Keukenhof</strong> — book by January 2027 at latest</li>
+          <li><strong>Anne Frank House</strong> — tickets released exactly 6 weeks before visit at 10 am NL time. Set a calendar alarm! They sell out within hours.</li>
+          <li><strong>Eurostar Amsterdam → Paris</strong> — prices rise rapidly, book 3+ months ahead</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUDGET -->
+  <section id="budget">
+    <h2>💰 Food &amp; Drink Budget</h2>
+    <div class="leg-card">
+      <div class="leg-header">
+        <div class="leg-title">For your non-cruise days (12 days, 4 people)</div>
+        <div class="leg-dates">2027 prices (AUD)</div>
+      </div>
+      <p>The cruise includes all meals and drinks with lunch and dinner, so you only need to budget for food on the 12 days <strong>before</strong> and <strong>after</strong> the cruise.</p>
+
+      <h4>Daily estimate per person</h4>
+      <table>
+        <thead><tr><th>City</th><th>Days</th><th>Per person / day</th><th>For 4 people / day</th></tr></thead>
+        <tbody>
+          <tr><td>🇨🇭 Zurich</td><td>3</td><td>AUD $190 – $220</td><td>~$800</td></tr>
+          <tr><td>🇨🇭 Basel</td><td>1</td><td>AUD $190 – $220</td><td>~$800</td></tr>
+          <tr><td>🌷 Amsterdam</td><td>4</td><td>AUD $110 – $140</td><td>~$500</td></tr>
+          <tr><td>🗼 Paris</td><td>4</td><td>AUD $120 – $150</td><td>~$540</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Total estimate by style</h4>
+      <table>
+        <thead><tr><th>Style</th><th>Per person</th><th>For all 4</th></tr></thead>
+        <tbody>
+          <tr><td>🥖 <strong>Thrifty</strong><br><small>Bakery breakfasts, picnic lunches, simple dinners</small></td><td>~$1,400</td><td><strong>~$5,600</strong></td></tr>
+          <tr><td>🍷 <strong>Comfortable</strong><br><small>Cafés, nice dinners, daily wines</small></td><td>~$1,900</td><td><strong>~$7,600</strong></td></tr>
+          <tr><td>🥂 <strong>Treat yourselves</strong><br><small>Fancy meals, cocktails, special nights</small></td><td>~$2,700+</td><td><strong>~$10,800+</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="tip">
+        <strong>💡 Recommended budget:</strong> Around <strong>AUD $7,500 – $8,000</strong> for the 4 of you across all non-cruise days. That's comfortable eating without stressing, plus a buffer for a couple of treat meals.
+      </div>
+
+      <h4>Handy tips to stretch the budget</h4>
+      <ul>
+        <li><strong>🇨🇭 Switzerland is the pricey one</strong> — a simple café lunch can be AUD $40. Use supermarkets (Coop or Migros) for lunches, save restaurants for dinner</li>
+        <li><strong>🥐 Paris &amp; Amsterdam:</strong> Grab croissants and coffee from bakeries (€4–6) instead of hotel breakfast buffets (€15–25)</li>
+        <li><strong>🍷 House wine</strong> at restaurants is almost always great, and half the price of named bottles</li>
+        <li><strong>🥪 Picnic lunches</strong> in parks are cheaper AND more fun — French bread, cheese, and fruit under the Eiffel Tower is a memory for life</li>
+        <li><strong>💧 Tap water</strong> is free and safe everywhere — ask for "<em>l'eau du robinet</em>" in France, "<em>Leitungswasser</em>" in Switzerland/Germany, "<em>kraanwater</em>" in the Netherlands</li>
+        <li><strong>🍽️ Lunch menus</strong> at nice restaurants are often half the price of dinner — same food, better deal!</li>
+        <li><strong>🎫 Fixed-price "menu du jour"</strong> (menu of the day) is usually the best value in French bistros</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRACTICAL INFO -->
+  <section id="practical">
+    <h2>🧳 Practical Info</h2>
+
+    <h3>💳 Money &amp; Travel Cards</h3>
+
+    <h4>Currencies you'll need</h4>
+    <ul>
+      <li>🇨🇭 <strong>Switzerland</strong> (Zurich, Basel): <strong>Swiss Francs (CHF)</strong> — AUD $1 ≈ CHF 0.55</li>
+      <li>🇩🇪🇳🇱🇫🇷 <strong>Germany, Netherlands, France:</strong> <strong>Euros (€)</strong> — AUD $1 ≈ €0.60</li>
+      <li>The cruise uses Euros on board</li>
+    </ul>
+
+    <h4>🌟 The Wise Debit Card — highly recommended</h4>
+    <p>The <strong>Wise Debit Card</strong> is one of the best travel cards for Australians going to Europe. Here's why it's brilliant:</p>
+    <ul>
+      <li>✅ <strong>Best exchange rate</strong> — uses the real mid-market rate (what Google shows you), not the inflated bank rate</li>
+      <li>✅ <strong>Hold multiple currencies</strong> — you can pre-load Euros AND Swiss Francs before the trip</li>
+      <li>✅ <strong>Very low fees</strong> — about 0.4% conversion, vs 3–5% at most banks</li>
+      <li>✅ <strong>Works like a normal debit card</strong> — tap, swipe, withdraw from ATMs</li>
+      <li>✅ <strong>Free app</strong> to track your spending in real time</li>
+      <li>✅ <strong>Apple Pay &amp; Google Pay</strong> compatible</li>
+    </ul>
+    <p><strong>Get it here:</strong> 🔗 <a href="https://wise.com/au/card/" target="_blank">wise.com/au/card</a> — free to open, takes about 1–2 weeks to arrive in the post.</p>
+
+    <h4>🥈 Backup card — ING Orange Everyday</h4>
+    <p>Take a <strong>second card from a different provider</strong> as a backup — if Wise gets blocked, lost, or the ATM eats it, you have another card to use. The <strong>ING Orange Everyday</strong> account is perfect for this:</p>
+    <ul>
+      <li>✅ <strong>Zero international fees</strong> on purchases and ATM withdrawals</li>
+      <li>✅ Uses Visa's exchange rate (close to mid-market)</li>
+      <li>✅ Free to open, no annual fees</li>
+      <li>⚠️ Must deposit $1,000/month and make 5 card purchases to qualify for fee-free overseas use — set this up <em>now</em> so it's active by March 2027</li>
+    </ul>
+    <p><strong>Open here:</strong> 🔗 <a href="https://www.ing.com.au/orange-everyday" target="_blank">ing.com.au/orange-everyday</a></p>
+
+    <h4>💵 How much cash to take</h4>
+    <table>
+      <thead><tr><th>Currency</th><th>Per person</th><th>For all 4</th></tr></thead>
+      <tbody>
+        <tr><td>🇨🇭 Swiss Francs (CHF)</td><td>CHF 100 (~AUD $180)</td><td>CHF 400 (~AUD $720)</td></tr>
+        <tr><td>🇪🇺 Euros (€)</td><td>€150 (~AUD $250)</td><td>€600 (~AUD $1,000)</td></tr>
+      </tbody>
+    </table>
+    <p>Cards are accepted almost everywhere in Europe these days, so you don't need loads of cash. But it's good to have some for:</p>
+    <ul>
+      <li>Small cafés or markets that don't take cards</li>
+      <li>Tips for tour guides, hotel porters, housekeeping</li>
+      <li>Small souvenir shops</li>
+      <li>Emergencies (if your card stops working)</li>
+      <li>Rhine ferry in Basel, public toilets (some charge €0.50)</li>
+    </ul>
+
+    <h4>⏰ When to order cards &amp; get cash</h4>
+    <ul>
+      <li><strong>3–4 weeks before departure:</strong> Apply for Wise and ING cards online — they take 1–2 weeks to arrive</li>
+      <li><strong>2 weeks before:</strong> Activate cards, test them at an Aussie ATM, top up Wise with some Euros</li>
+      <li><strong>1 week before:</strong> Order cash from Travelex, Australia Post, or your bank (order online for better rates than walk-in)</li>
+      <li>🔗 <a href="https://www.travelex.com.au" target="_blank">travelex.com.au</a> (free home delivery or pick up at airport)</li>
+      <li><strong>⚠️ NEVER exchange cash at the airport on arrival</strong> — the rates are terrible!</li>
+    </ul>
+
+    <h4>🚨 Critical tip: ALWAYS pay in local currency!</h4>
+    <div class="tip">
+      <strong>⚠️ Watch out for "DCC" (Dynamic Currency Conversion):</strong> When you tap your card at a European shop or ATM, the machine might ask "<em>Pay in AUD or EUR?</em>" — <strong>ALWAYS choose EUR (or CHF in Switzerland)!</strong>
+      <br><br>
+      If you pick "AUD", the shop does the conversion at a terrible rate and you can lose <strong>5–8% extra</strong> on every transaction. Over 3 weeks this adds up to hundreds of dollars. Just always pay in the local currency and let your Wise/ING card handle it — they'll give you a much better rate.
+    </div>
+
+    <h4>Other money tips</h4>
+    <ul>
+      <li>📞 <strong>Tell your banks you're travelling</strong> before you go — otherwise they may block your cards thinking there's fraud</li>
+      <li>📱 <strong>Download banking apps</strong> and make sure you remember your passwords</li>
+      <li>🏧 <strong>Use bank ATMs</strong> (e.g. UBS, Credit Suisse, ING, BNP Paribas) — avoid "Euronet" and other "Travelex" coloured ATMs which charge huge fees</li>
+      <li>💸 <strong>Withdraw larger amounts less often</strong> — ATM fees are usually a flat fee, so one €200 withdrawal is cheaper than four €50 ones</li>
+      <li>💳 <strong>Keep cards in separate bags</strong> — if one handbag is stolen, you still have a card</li>
+    </ul>
+
+    <h3>Weather (late March / early April)</h3>
+    <table>
+      <thead><tr><th>Place</th><th>Day temp</th><th>Night temp</th><th>Conditions</th></tr></thead>
+      <tbody>
+        <tr><td>Zurich / Basel</td><td>10–14°C</td><td>2–5°C</td><td>Cool &amp; crisp, some rain</td></tr>
+        <tr><td>Rhine Valley</td><td>11–15°C</td><td>3–6°C</td><td>Mild spring days</td></tr>
+        <tr><td>Amsterdam</td><td>10–13°C</td><td>3–6°C</td><td>Cool, breezy, possibly rainy</td></tr>
+        <tr><td>Paris</td><td>12–16°C</td><td>5–8°C</td><td>Mild, blossoms out!</td></tr>
+      </tbody>
+    </table>
+
+    <h3>What to pack</h3>
+    <ul>
+      <li><strong>Layers</strong> — a warm jacket, a lighter jumper, and long sleeves. Mornings are cool, afternoons can be mild</li>
+      <li><strong>Waterproof coat or small umbrella</strong> — spring showers are common</li>
+      <li><strong>Comfortable walking shoes</strong> — cobblestones are everywhere. Leave the heels at home!</li>
+      <li><strong>Scarf &amp; gloves</strong> — light ones for chilly days</li>
+      <li><strong>Travel adapter</strong> — Europe uses Type C/F plugs (2 round pins). A universal adapter with USB ports is ideal</li>
+      <li><strong>Small day pack</strong> for city exploring</li>
+      <li><strong>Smart casual outfit</strong> for the cruise dining room (nothing formal needed)</li>
+    </ul>
+
+    <h3>Language basics</h3>
+    <ul>
+      <li>English is widely spoken everywhere you're going — don't worry!</li>
+      <li>But a few polite words go a long way: <strong>bonjour</strong> (hello, French), <strong>merci</strong> (thanks, French), <strong>dankjewel</strong> (thanks, Dutch), <strong>danke</strong> (thanks, German), <strong>grüezi</strong> (hello, Swiss)</li>
+    </ul>
+
+    <h3>📱 Phones, eSIMs &amp; Maps</h3>
+
+    <h4>🌟 Best option: Airalo eSIM</h4>
+    <p>The easiest way to have mobile data in Europe is to buy an <strong>eSIM</strong> before you go. No swapping SIM cards, no queues at the airport — just tap a button and you're online. <strong>Airalo</strong> is the most popular and easiest for first-time users.</p>
+
+    <ul>
+      <li>✅ <strong>Easy to set up</strong> — even if you're not techy</li>
+      <li>✅ <strong>Install before you fly</strong>, activate when you land in Zurich</li>
+      <li>✅ <strong>One plan covers everywhere</strong> — Switzerland, Germany, Netherlands, France (all on the "Eurolink" regional plan)</li>
+      <li>✅ <strong>Keeps your Australian number active</strong> — your regular SIM still receives texts from your bank etc.</li>
+      <li>✅ <strong>Much cheaper than roaming</strong> — Telstra/Optus roaming is about $10/day; Airalo is about $40 for the whole trip</li>
+    </ul>
+
+    <p><strong>Recommended plan:</strong> "Eurolink" <strong>10GB for 30 days</strong> — about <strong>AUD $40 per person</strong>. Plenty for 3 weeks of Google Maps, WhatsApp, photos, and browsing.</p>
+    <p><strong>Get it here:</strong> 🔗 <a href="https://www.airalo.com" target="_blank">airalo.com</a> — download the Airalo app from the App Store / Google Play</p>
+
+    <h4>Alternatives to Airalo</h4>
+    <table>
+      <thead><tr><th>Provider</th><th>Why</th><th>Website</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Holafly</strong></td><td>Unlimited data plans (great for heavy users)</td><td><a href="https://www.holafly.com" target="_blank">holafly.com</a></td></tr>
+        <tr><td><strong>Nomad</strong></td><td>Often the cheapest</td><td><a href="https://www.getnomad.app" target="_blank">getnomad.app</a></td></tr>
+        <tr><td><strong>Saily</strong> (by NordVPN)</td><td>Competitive, good app</td><td><a href="https://saily.com" target="_blank">saily.com</a></td></tr>
+        <tr><td><strong>Orange Holiday</strong> (physical SIM)</td><td>If your phone doesn't support eSIM</td><td><a href="https://travel.orange.com" target="_blank">travel.orange.com</a></td></tr>
+      </tbody>
+    </table>
+    <div class="tip">
+      <strong>⚠️ Watch out for fake sites!</strong> Search "Airalo" directly in your browser — don't click sponsored ads at the top of Google search results. Only use the official sites listed above.
+    </div>
+
+    <h4>📱 Does your phone support eSIM?</h4>
+    <ul>
+      <li>✅ <strong>iPhone XS</strong> (2018) and newer</li>
+      <li>✅ <strong>Google Pixel 3</strong> and newer</li>
+      <li>✅ <strong>Samsung Galaxy S20</strong> and newer</li>
+      <li>✅ Most modern Android phones from 2020 onwards</li>
+    </ul>
+    <p><strong>How to check:</strong></p>
+    <ul>
+      <li><strong>iPhone:</strong> Settings → General → About → look for "EID" number</li>
+      <li><strong>Android:</strong> Settings → Connections → SIM manager → "Add eSIM" option</li>
+    </ul>
+    <p>If in doubt — ask Dom to check for you! 😊</p>
+
+    <h4>⏰ When to buy your eSIM</h4>
+    <table>
+      <thead><tr><th>Timing</th><th>What to do</th></tr></thead>
+      <tbody>
+        <tr><td><strong>3–4 weeks before</strong></td><td>Check your phone is eSIM compatible</td></tr>
+        <tr><td><strong>1 week before</strong></td><td>Buy &amp; install the eSIM on your phone (don't activate the data yet!)</td></tr>
+        <tr><td><strong>Day of travel</strong></td><td>Keep your Australian SIM active until you land</td></tr>
+        <tr><td><strong>Arrival in Zurich</strong></td><td>Turn on eSIM data, connect, you're online! 📶</td></tr>
+      </tbody>
+    </table>
+
+    <h4>🗺️ Maps — download BEFORE you go!</h4>
+    <p>This is one of the most useful tips — download <strong>offline maps</strong> of every city you're visiting. Then even if you run out of data or have no signal, Google Maps still works perfectly!</p>
+
+    <ol>
+      <li>Open <strong>Google Maps</strong> on your phone (at home, on WiFi)</li>
+      <li>Search for <strong>Zurich</strong> (then <strong>Basel</strong>, <strong>Amsterdam</strong>, <strong>Paris</strong>, etc.)</li>
+      <li>Tap the city name at the bottom</li>
+      <li>Tap <strong>"Download"</strong> (or the three dots → "Download offline map")</li>
+      <li>Repeat for every city on your itinerary</li>
+    </ol>
+
+    <p>Also download these <strong>offline maps</strong> for the cruise stops:</p>
+    <ul>
+      <li>Breisach &amp; Colmar area (France/Germany border)</li>
+      <li>Strasbourg</li>
+      <li>Speyer, Rüdesheim, Koblenz</li>
+      <li>Cologne</li>
+      <li>Kinderdijk</li>
+    </ul>
+
+    <div class="tip">
+      <strong>💡 Offline maps are a lifesaver!</strong> Even without mobile data, you can search addresses, get walking directions, and navigate step-by-step. Perfect backup if your eSIM has issues — and saves a lot of mobile data when you're just walking around.
+    </div>
+
+    <h4>📲 Apps to download before you go</h4>
+    <table>
+      <thead><tr><th>App</th><th>What for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WhatsApp</strong></td><td>Standard messaging in Europe — keep in touch with family</td></tr>
+        <tr><td><strong>Google Maps</strong></td><td>Navigation + offline maps</td></tr>
+        <tr><td><strong>Google Translate</strong></td><td>Download French, German, Dutch languages for offline translation — can even translate photos of menus!</td></tr>
+        <tr><td><strong>Wise</strong></td><td>Manage your travel card</td></tr>
+        <tr><td><strong>Airalo</strong></td><td>Your eSIM manager</td></tr>
+        <tr><td><strong>Booking.com</strong></td><td>All your hotel bookings in one place</td></tr>
+        <tr><td><strong>Eurostar</strong> or <strong>Trainline</strong></td><td>Train tickets Amsterdam → Paris</td></tr>
+        <tr><td><strong>SBB</strong> (Swiss trains)</td><td>Train tickets Zurich → Basel</td></tr>
+        <tr><td><strong>Viking Cruises</strong></td><td>Ship info, excursions, on-board menu</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Other tips for staying in touch</h4>
+    <ul>
+      <li>📞 <strong>Keep your Australian SIM active</strong> — you'll still get SMS banking codes and family can reach you on your normal number</li>
+      <li>✈️ <strong>Turn OFF "data roaming"</strong> on your Australian SIM so you don't accidentally rack up a bill</li>
+      <li>📶 <strong>Free WiFi</strong> is available in most hotels, cafés, McDonald's, Starbucks, and on the Viking ship</li>
+      <li>📱 <strong>Test everything at home</strong> a day before you fly — make sure WhatsApp works, Google Maps downloads are saved, eSIM app is installed</li>
+    </ul>
+
+    <h3>Travel insurance</h3>
+    <div class="tip">
+      <strong>💡 Important:</strong> Make sure you have travel insurance that covers cruises, medical, and cancellation. Ask Dom or your insurer before you leave. Keep the policy number and emergency phone number saved on your phone AND written down on paper.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>🇪🇺 Europe 2027 · Made with love by Joe for Kym</p>
+  <p>Questions? Ask me any time on Telegram or Claude Code.</p>
+</footer>
+
+</body>
+</html>
