@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Breisach Morning Walk</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; }
+  #map { width: 100%; height: 55vh; min-height: 300px; }
+  .header { background: linear-gradient(135deg, #2d1b69, #11998e); padding: 16px 20px; text-align: center; }
+  .header h1 { font-size: 1.4em; color: #fff; margin-bottom: 4px; }
+  .header p { font-size: 0.85em; color: rgba(255,255,255,0.8); }
+  .stops { padding: 12px 16px 80px; max-width: 600px; margin: 0 auto; }
+  .stop { display: flex; gap: 12px; margin-bottom: 16px; position: relative; }
+  .stop::before { content: ''; position: absolute; left: 17px; top: 40px; bottom: -16px; width: 2px; background: #11998e; opacity: 0.4; }
+  .stop:last-child::before { display: none; }
+  .num { min-width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9em; flex-shrink: 0; z-index: 1; }
+  .stop-body { flex: 1; }
+  .stop-name { font-weight: 700; font-size: 1em; margin-bottom: 2px; }
+  .stop-time { font-size: 0.75em; color: #11998e; margin-bottom: 4px; }
+  .stop-desc { font-size: 0.85em; color: #b0b0b0; line-height: 1.45; }
+  .tip { font-size: 0.8em; color: #f0c040; margin-top: 4px; }
+  .summary { background: #16213e; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+  .summary h2 { font-size: 1em; color: #11998e; margin-bottom: 8px; }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .summary-item { font-size: 0.85em; }
+  .summary-label { color: #888; }
+  .bonus { background: linear-gradient(135deg, #1a1a3e, #162a3e); border: 1px solid #11998e44; border-radius: 12px; padding: 16px; margin-top: 8px; }
+  .bonus h3 { color: #11998e; font-size: 0.95em; margin-bottom: 6px; }
+  .bonus p { font-size: 0.85em; color: #b0b0b0; line-height: 1.45; }
+  /* marker colours */
+  .n-green { background: #11998e; color: #fff; }
+  .n-blue { background: #2d6bcf; color: #fff; }
+  .n-purple { background: #7c3aed; color: #fff; }
+  .n-gold { background: #c8922a; color: #fff; }
+  .n-red { background: #cf4444; color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Breisach Morning Walk</h1>
+  <p>Mon 29 Mar 2027 &middot; ~2 hrs &middot; 2.5 km loop</p>
+</div>
+
+<div id="map"></div>
+
+<div class="stops">
+
+  <div class="summary">
+    <h2>At a Glance</h2>
+    <div class="summary-grid">
+      <div class="summary-item"><span class="summary-label">Distance:</span> ~2.5 km</div>
+      <div class="summary-item"><span class="summary-label">Time:</span> 1.5 - 2 hrs</div>
+      <div class="summary-item"><span class="summary-label">Difficulty:</span> Easy (one hill)</div>
+      <div class="summary-item"><span class="summary-label">Best time:</span> 8:30 - 10:30am</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-green">1</div>
+    <div class="stop-body">
+      <div class="stop-name">Viking Ship / Rhine Dock</div>
+      <div class="stop-time">0 min</div>
+      <div class="stop-desc">Disembark and walk into town along the river. The old town is right there - no bus needed.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-green">2</div>
+    <div class="stop-body">
+      <div class="stop-name">Marktplatz (Market Square)</div>
+      <div class="stop-time">5 min from ship</div>
+      <div class="stop-desc">Central square with cafes and bakeries. Grab a coffee for the walk. The Tourist Office is at #16 if you want a free map.</div>
+      <div class="tip">Tourist Office open Mon 9:00-12:30</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-blue">3</div>
+    <div class="stop-body">
+      <div class="stop-name">Gutgesellentor (Town Gate)</div>
+      <div class="stop-time">+ 5 min</div>
+      <div class="stop-desc">One of the old medieval gates. Walk through and head uphill to the left - follow signs to the Munster (cathedral). Short steep climb on cobblestones.</div>
+      <div class="tip">Wear comfortable shoes - cobbled steps</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-purple">4</div>
+    <div class="stop-body">
+      <div class="stop-name">St. Stephansmunster (Cathedral)</div>
+      <div class="stop-time">+ 10 min climb &middot; Allow 20-30 min here</div>
+      <div class="stop-desc">The highlight. 13th-century cathedral sitting on top of the hill. Inside: a stunning fresco by Martin Schongauer and a carved wood altarpiece. Outside on Munsterplatz: 360-degree views over the Rhine into France, the Black Forest behind you, and the Vosges mountains. Look for the Europa-Stier (bull sculpture) on the square.</div>
+      <div class="tip">THE photo spot - morning sun behind you, France ahead</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-purple">5</div>
+    <div class="stop-body">
+      <div class="stop-name">Rathaus & Ramparts Viewpoint</div>
+      <div class="stop-time">+ 5 min</div>
+      <div class="stop-desc">Town Hall sits beside the cathedral. Walk to the edge of the plateau and look down - you can see the old Vauban-era fortress walls running down the hillside. Views over the Rhine island and river bridges.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-purple">6</div>
+    <div class="stop-body">
+      <div class="stop-name">Franciscan Monastery Garden</div>
+      <div class="stop-time">+ 5 min</div>
+      <div class="stop-desc">Head down Kapuzinergasse to this quiet garden. Lovely views over the Rhine valley. A peaceful spot to sit for a few minutes before heading downhill.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-blue">7</div>
+    <div class="stop-body">
+      <div class="stop-name">Radbrunnenturm (Well Tower)</div>
+      <div class="stop-time">+ 5 min</div>
+      <div class="stop-desc">Medieval tower with a fascinating old well-mechanism mounted on the outside - 900-year-old engineering! Turn right into Radbrunnenallee, a pretty old-town street.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-blue">8</div>
+    <div class="stop-body">
+      <div class="stop-name">Goldengasse & Kapftor</div>
+      <div class="stop-time">+ 10 min</div>
+      <div class="stop-desc">Atmospheric lane through the old town. At the end you reach Kapftor - another medieval gate. Go through and down the steps toward the river.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-gold">9</div>
+    <div class="stop-body">
+      <div class="stop-name">Rheintor (Rhine Gate)</div>
+      <div class="stop-time">+ 5 min &middot; Allow 10-15 min</div>
+      <div class="stop-desc">The last surviving Vauban fortress gate - impressive stonework. There's a small history museum inside (may be closed Mon in March - the exterior is great regardless). Walk through to the Rhine waterfront.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-gold">10</div>
+    <div class="stop-body">
+      <div class="stop-name">Rhine Promenade (Fischerhalde)</div>
+      <div class="stop-time">+ 15 min stroll</div>
+      <div class="stop-desc">Flat riverside walk back toward town. Open views across the water to France. Cafe terraces if the weather is kind. This is where you can see the bridge to Neuf-Brisach (France) if you fancy the bonus walk.</div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <div class="num n-green">11</div>
+    <div class="stop-body">
+      <div class="stop-name">Back to Marktplatz / Ship</div>
+      <div class="stop-time">+ 5 min</div>
+      <div class="stop-desc">Loop complete! Grab a pastry or second coffee before heading back to the ship for the afternoon Colmar excursion.</div>
+    </div>
+  </div>
+
+  <div class="bonus">
+    <h3>Bonus: Neuf-Brisach, France (+1 hr)</h3>
+    <p>If you have time, walk or bus across the Rhine bridge (~4 km, flat) to this UNESCO star-shaped fortress town built by Vauban in 1699. Perfectly geometric ramparts, a tiny museum, and a completely different vibe. Grab a crepe and walk back. You're literally crossing into France on foot.</p>
+  </div>
+
+</div>
+
+<script>
+// Breisach walking tour stops with coordinates
+const stops = [
+  { n: 1,  name: "Viking Ship / Rhine Dock",        lat: 48.0275, lng: 7.5810, color: "#11998e" },
+  { n: 2,  name: "Marktplatz",                       lat: 48.0284, lng: 7.5830, color: "#11998e" },
+  { n: 3,  name: "Gutgesellentor",                   lat: 48.0290, lng: 7.5845, color: "#2d6bcf" },
+  { n: 4,  name: "St. Stephansmunster",              lat: 48.0295, lng: 7.5870, color: "#7c3aed" },
+  { n: 5,  name: "Rathaus & Ramparts",               lat: 48.0292, lng: 7.5878, color: "#7c3aed" },
+  { n: 6,  name: "Franciscan Garden",                lat: 48.0288, lng: 7.5890, color: "#7c3aed" },
+  { n: 7,  name: "Radbrunnenturm",                   lat: 48.0280, lng: 7.5880, color: "#2d6bcf" },
+  { n: 8,  name: "Goldengasse & Kapftor",            lat: 48.0273, lng: 7.5870, color: "#2d6bcf" },
+  { n: 9,  name: "Rheintor (Rhine Gate)",            lat: 48.0268, lng: 7.5838, color: "#c8922a" },
+  { n: 10, name: "Rhine Promenade",                  lat: 48.0272, lng: 7.5815, color: "#c8922a" },
+  { n: 11, name: "Back to Marktplatz",               lat: 48.0284, lng: 7.5830, color: "#11998e" },
+];
+
+// Neuf-Brisach bonus
+const bonus = { name: "Neuf-Brisach (Bonus)", lat: 48.0175, lng: 7.5280, color: "#cf4444" };
+
+const map = L.map('map', { zoomControl: true }).setView([48.0280, 7.5850], 16);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap',
+  maxZoom: 19
+}).addTo(map);
+
+// Draw the walking route
+const routeCoords = stops.map(s => [s.lat, s.lng]);
+L.polyline(routeCoords, { color: '#11998e', weight: 4, opacity: 0.7, dashArray: '8, 8' }).addTo(map);
+
+// Numbered circle markers
+stops.forEach(s => {
+  const icon = L.divIcon({
+    className: '',
+    html: `<div style="
+      width:28px; height:28px; border-radius:50%;
+      background:${s.color}; color:#fff; font-weight:700; font-size:13px;
+      display:flex; align-items:center; justify-content:center;
+      border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    ">${s.n}</div>`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 14]
+  });
+  L.marker([s.lat, s.lng], { icon }).addTo(map).bindPopup(`<b>${s.n}. ${s.name}</b>`);
+});
+
+// Bonus marker for Neuf-Brisach (visible when zoomed out)
+const bonusIcon = L.divIcon({
+  className: '',
+  html: `<div style="
+    width:28px; height:28px; border-radius:50%;
+    background:${bonus.color}; color:#fff; font-weight:700; font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+    border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  ">+</div>`,
+  iconSize: [28, 28],
+  iconAnchor: [14, 14]
+});
+L.marker([bonus.lat, bonus.lng], { icon: bonusIcon }).addTo(map).bindPopup(`<b>${bonus.name}</b><br>UNESCO star fortress, 4km across the Rhine`);
+</script>
+
+</body>
+</html>
