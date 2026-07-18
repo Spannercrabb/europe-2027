@@ -8,12 +8,13 @@
  *   - Cross-origin requests (e.g. Google Maps links): passed straight through, never cached.
  * Bump CACHE_VERSION to force a clean re-cache on next visit.
  */
-const CACHE_VERSION = 'v1-2026-07-03';
+const CACHE_VERSION = 'v2-2026-07-18';
 const CACHE = 'europe2027-' + CACHE_VERSION;
 
 const CORE = [
   './',
   './index.html',
+  './breisach-walking-tour.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
